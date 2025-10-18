@@ -1,6 +1,5 @@
 import { Drawer } from 'expo-router/drawer';
-import { StatusBar, StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export default function RootLayout() {
@@ -19,7 +18,13 @@ export default function RootLayout() {
                     name="index"
                     options={{ title: 'Início' }}
                 />
+
+                <Drawer.Screen
+                    name='(moedas)'
+                    options={{ title: 'Moedas' }}></Drawer.Screen>
             </Drawer>
+
+
         </SafeAreaProvider>
     );
 }
