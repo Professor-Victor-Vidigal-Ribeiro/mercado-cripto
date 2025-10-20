@@ -1,6 +1,6 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { globalStyles } from '../../styles/global';
-import { Moeda } from '../../types/Moeda';
+import { Moeda } from '../../src/types/Moeda';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, FlatList, StyleSheet } from 'react-native';
 import { ItemMoeda } from '../../src/components/ItemMoeda';

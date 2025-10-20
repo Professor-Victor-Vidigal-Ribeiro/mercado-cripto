@@ -25,6 +25,13 @@ export default function MoedasLayout() {
                 />
 
 
+                <Tabs.Screen
+                    name="favoritas"
+                    options={{
+                        title: "Moedas Favoritas",
+                        tabBarIcon: ({ color, size }) => (<MaterialIcons name="star-rate" size={size + 4} color={color} />)
+                    }}
+                />
 
                 <Tabs.Screen
                     name="exemplo1"
