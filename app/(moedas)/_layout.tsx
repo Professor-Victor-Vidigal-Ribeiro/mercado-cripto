@@ -27,9 +27,17 @@ export default function MoedasLayout() {
 
 
                 <Tabs.Screen
-                    name="exemplos"
+                    name="exemplo1"
                     options={{
-                        title: "Exemplos",
+                        title: "Exemplo 1",
+                        tabBarIcon: ({ color, size }) => (<MaterialIcons name="help" size={size + 4} color={color} />)
+                    }}
+                />
+
+                <Tabs.Screen
+                    name="exemplo2"
+                    options={{
+                        title: "Exemplo 2",
                         tabBarIcon: ({ color, size }) => (<MaterialIcons name="help" size={size + 4} color={color} />)
                     }}
                 />
