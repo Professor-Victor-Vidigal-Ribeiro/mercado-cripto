@@ -3,6 +3,7 @@ import type { Moeda } from '../../src/types/Moeda';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect } from 'react';
+import { favoritaEvents } from '../events/favoritaEvent';
 
 type Props = {
     item: Moeda;
@@ -32,13 +33,19 @@ export function ItemMoeda({ item, index }: Props) {
                 if (ids_favoritas.includes(item.id)) {
                     const ids_favoritas_atualizado = ids_favoritas.filter((id) => id !== item.id);
                     AsyncStorage.setItem(MOEDAS_FAVORITAS_IDS, JSON.stringify(ids_favoritas_atualizado))
-                        .then(() => setFavorita(false));
+                        .then(() => {
+                            setFavorita(false);
+                            favoritaEvents.emit('favoritos:changed'); // notifica que os favoritos mudaram
+                        });
                 }
                 //3- se não estava favoritada, adiciona aos favoritos
                 else {
                     const ids_favoritas_atualizado = [...ids_favoritas, item.id]; // utilizando operador spread (...). 'Espalha' os itens do array antigo em um novo array, e adiciona o novo id no final
                     AsyncStorage.setItem(MOEDAS_FAVORITAS_IDS, JSON.stringify(ids_favoritas_atualizado))
-                        .then(() => setFavorita(true));
+                        .then(() => {
+                            setFavorita(true);
+                            favoritaEvents.emit('favoritos:changed');
+                        });
                 }
             })
             .catch(err => console.log(err));
